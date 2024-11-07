@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Importando a fonte Poppins com peso 600 (SemiBold) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* Define a imagem de fundo para cobrir toda a tela */
+        body {
+            background-image: url('https://wallpapers.com/images/hd/cybersecurity-background-wjrgl4k1buq1aa5h.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* A imagem fica fixa ao rolar a página */
+            font-family: 'Poppins', sans-serif; /* Aplica a fonte Poppins SemiBold 600 */
+        }
+
+        /* Logo no canto superior esquerdo */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 150px; /* Ajuste o tamanho da logo conforme necessário */
+            height: auto;
+        }
+
+        /* Título com fonte SemiBold (Poppins 600) */
+        h2 {
+            font-family: 'Poppins', sans-serif; /* Aplica a fonte Poppins */
+            font-weight: 600; /* SemiBold 600 */
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Define a cor preta para o restante do texto */
+        .container, .form-group label, .form-check-label, .text-muted, .btn {
+            color: #000; /* Cor preta */
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com transparência para destacar o conteúdo */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #565e64;
+            border-color: #565e64;
+        }
+
+        .text-muted {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .form-check-label {
+            font-size: 1em;
+        }
+
+        .mt-3 {
+            margin-top: 20px;
+        }
+
+        /* Mantém a fonte do botão "Sair" como padrão */
+        .btn-secondary {
+            font-family: Arial, sans-serif; /* Fonte padrão para o botão */
+            font-weight: normal; /* Não em negrito */
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo no canto superior esquerdo -->
+    <img src="https://cdn.icon-icons.com/icons2/2072/PNG/512/internet_lock_locked_padlock_password_secure_security_icon_127100.png" alt="Logo" class="logo"> <!-- Substitua o link da logo pela sua logo real -->
+
+    <div class="container">
+        <!-- Título "Cadastro do Usuário" -->
+        <h2>Cadastro do Usuário</h2>
+
+        <form action="/users/save" method="POST">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <p class="text-muted">A senha deve ter pelo menos 8 caracteres, incluindo um número e um caractere especial.</p>
+                <input type="password" id="senha" name="senha" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="confsenha">Confirme a Senha:</label>
+                <input type="password" id="confsenha" name="confsenha" class="form-control" required>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" id="ativo" name="ativo" class="form-check-input">
+                <label class="form-check-label" for="ativo">Ativo</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+        </form>
+        <a href="/users" class="btn btn-secondary mt-3">Retornar</a>
+    </div>
+</body>
+</html>

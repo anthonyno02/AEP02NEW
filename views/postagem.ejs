@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Z - Carrossel de Imagens</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonte Poppins SemiBold 600 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* Define a imagem de fundo para cobrir toda a tela */
+        body {
+            background-image: url('https://wallpapers.com/images/hd/cybersecurity-background-wjrgl4k1buq1aa5h.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* A imagem fica fixa ao rolar a página */
+            font-family: 'Poppins', sans-serif; /* Aplica a fonte Poppins SemiBold 600 para o corpo inteiro */
+            color: #343a40; /* Cor do texto */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Logo no canto superior esquerdo */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 150px; /* Ajuste o tamanho do logo */
+        }
+
+        /* Container do conteúdo */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco translúcido */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: auto;
+            margin-top: 120px; /* Aumenta a margem superior para o conteúdo não ficar colado no topo */
+        }
+
+        /* Título principal */
+        h1 {
+            text-align: center;
+            color: #00BFFF; /* Azul claro */
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        /* Botão "Sair" com a fonte padrão */
+        .btn-danger {
+            font-family: Arial, sans-serif; /* Fonte padrão para o botão */
+            font-weight: normal; /* Não em negrito */
+            float: right;
+        }
+
+        #imageCarousel {
+            margin-top: 30px;
+        }
+
+        /* Carrossel */
+        .carousel-item img {
+            max-height: 450px;
+            object-fit: cover;
+        }
+
+        /* Legenda do carrossel */
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .carousel-caption h5,
+        .carousel-caption p {
+            color: #f8f9fa;
+        }
+
+        .carousel-caption.d-flex {
+            height: 100%;
+        }
+
+        /* Ícones do carrossel */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #343a40;
+            border-radius: 50%;
+        }
+
+        /* Espaços reservados para o texto abaixo do carrossel */
+        .reserved-space {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco translúcido */
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo no canto superior esquerdo -->
+    <img src="https://cdn.icon-icons.com/icons2/2072/PNG/512/internet_lock_locked_padlock_password_secure_security_icon_127100.png" alt="Logo" class="logo">
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Secure Dados</h1>
+        <a href="/users/login" class="btn btn-danger mb-3">Sair</a>
+
+        <h2 class="mt-5">Confira algumas dicas de segurança</h2>
+
+        <!-- Carrossel de imagens -->
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <% if (posts.length > 0) { %>
+                    <% posts.forEach((post, index) => { %>
+                        <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                            <img src="<%= post.imageUrl %>" class="d-block w-100" alt="Imagem da Postagem">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <h5><%= post.titulo %></h5>
+                                <p><%= post.descricao %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <!-- Caso não tenha postagens, mostre quatro imagens fixas -->
+                    <div class="carousel-item active">
+                        <img src="https://st3.depositphotos.com/2673929/33928/i/450/depositphotos_339287092-stock-photo-cyber-security-and-global-data.jpg" class="d-block w-100" alt="Imagem de Placeholder">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h5> Fazer backup de arquivos: </h5>
+                            <p>Fazer backups periódicos é uma prática de segurança recomendada para evitar a perda de dados. No ambiente empresarial, isso é ainda mais importante, sobretudo com o avanço das fraudes virtuais.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://wallpapers.com/images/featured/historico-de-ciberseguranca-phtcuiqye3304ajv.jpg" class="d-block w-100" alt="Imagem de Placeholder">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h5>Usar senhas fortes:</h5>
+                            <p>Senhas longas, que não remetam a informações pessoais, como nome completo, data de nascimento ou de um parente, e que mesclem letras, números e símbolos são mais seguras.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://sindpd.org.br/sindpd/upload/news/1722954845513.jpg" class="d-block w-100" alt="Imagem de Placeholder">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h5>Evitar logins por meio de redes sociais:</h5>
+                            <p>Acessar sites por meio das redes sociais aumenta a vulnerabilidade e permite que o site tenha acesso a todas as informações disponibilizadas.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i0.wp.com/seginfo.com.br/wp-content/uploads/2023/03/AdobeStock_563391369.jpeg?resize=678%2C452&ssl=1" class="d-block w-100" alt="Imagem de Placeholder">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <h5>Usar autenticação multifatorial:</h5>
+                            <p>Quando possível, é recomendado usar a autenticação em dois fatores (2FA) para tornar as contas mais seguras.
+                                É um método de segurança que exige duas formas de identificação para acessar uma conta ou sistema digital: 
+                                A senha de acesso e um segundo fator, como um código de verificação gerado em um dispositivo confiável.
+                                </p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Espaços reservados para o texto abaixo do carrossel -->
+        <div class="reserved-space">
+            <h3>Curiosidades sobre a Perda de Dados</h3>
+            <h3>Causa comum: </h3>
+            <p>falhas de hardware: Aproximadamente 60% das perdas de dados são causadas por falhas de hardware, como discos rígidos danificados ou defeitos em outros dispositivos de armazenamento. Mesmo com backups regulares, o dano físico ao equipamento pode resultar na perda irreparável de dados.</p>
+        </div>
+
+        <div class="reserved-space">
+            <h3>Erros humanos: </h3>
+            <p>Uma das maiores causas de perda de dados é o erro humano. Segundo estudos, mais de 30% das perdas de dados ocorrem devido a ações equivocadas, como exclusão acidental, formatação errada ou falha ao fazer backup adequado dos dados..</p>
+        </div>
+
+        <div class="reserved-space">
+            <h3>Duração dos dados perdidos: </h3>
+            <p>Alguns dados podem ser recuperados muito tempo após a perda. Até 50% dos dados excluídos de um computador podem ser recuperados com ferramentas especializadas, caso não tenham sido sobrescritos, o que significa que é possível recuperar arquivos por semanas, meses ou até anos após a exclusão..</p>
+        </div>
+    </div>
+    
+    <!-- Scripts do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonte Poppins SemiBold 600 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* Definir o fundo da página */
+        body {
+            background-image: url('https://img.freepik.com/fotos-premium/fundo-de-tecnologia-azul-com-elementos-de-circuito-3d_327483-665.jpg?w=1060');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: #fff;
+            font-family: 'Poppins', sans-serif; /* Fonte Poppins SemiBold 600 */
+        }
+
+        /* Adicionando o logo no canto superior esquerdo */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            width: 150px;
+        }
+
+        /* Centralizando o formulário */
+        .login-container {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-label {
+            color: #ddd;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mt-3 {
+            margin-top: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="https://cdn.icon-icons.com/icons2/2072/PNG/512/internet_lock_locked_padlock_password_secure_security_icon_127100.png" alt="Logo" class="logo">
+
+    <div class="container login-container">
+        <h1>Login</h1>
+        <form action="/users/login" method="POST">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha:</label>
+                <input type="password" id="senha" name="senha" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+            <a href="/users/cadastro" class="btn btn-primary mt-3">Cadastrar</a>
+        </form>
+        <a href="/users" class="btn btn-secondary mt-3">Retornar</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

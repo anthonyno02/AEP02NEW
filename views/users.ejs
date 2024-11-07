@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Z - Lista de Usuários</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet"> <!-- Fonte Poppins -->
+    <style>
+        /* Define a imagem de fundo para cobrir toda a tela */
+        body {
+            background-image: url('https://tm.ibxk.com.br/2023/12/01/01114239901110.jpeg?ims=750x');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* A imagem fica fixa ao rolar a página */
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Garante que a altura ocupe toda a tela */
+        }
+
+        /* Estilo para a logo no canto superior esquerdo */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 150px;  /* Ajuste o tamanho da logo */
+            height: auto;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência para contraste */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .table {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 15px;
+        }
+
+        .table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+
+        .table td a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .table td a.btn-sm {
+            padding: 6px 15px;
+            font-size: 13px;
+        }
+
+        .mt-3 {
+            margin-top: 20px;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #888;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo no canto superior esquerdo -->
+    <img src="https://cdn.icon-icons.com/icons2/2072/PNG/512/internet_lock_locked_padlock_password_secure_security_icon_127100.png" alt="Logo" class="logo"> <!-- Substitua pela URL da sua logo -->
+
+    <div class="container">
+        <h1>Lista de Usuários</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (users && users.length > 0) { %>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td>
+                                <a href="/users/cadastro/<%= user.id %>" class="btn btn-primary btn-sm">Modificar</a>
+                                <a href="/users/delete/<%= user.id %>" class="btn btn-danger btn-sm">Deletar</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4" class="no-data">Nenhum usuário cadastrado</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        
+        <div class="d-flex justify-content-start">
+            <a class="btn btn-primary mt-3 me-2" href="/users/cadastro">Adicionar</a>
+            <a class="btn btn-secondary mt-3" href="/users/login">Login</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
